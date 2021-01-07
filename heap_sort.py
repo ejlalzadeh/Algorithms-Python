@@ -1,21 +1,86 @@
-import matplotlib.pyplot as plt 
+# Huffman Coding in python
+import sys
+import tkinter as tk
+from tkinter import filedialog
+choice = input("Hi! Your Choices Are : [Console : 1]  [File : 2]\nPlease Enter Your Choice :")
+if choice == '1':
+    string=input("Enter Your String :")
+elif choice=='2' :
+    root = tk.Tk()
+    #root.withdraw()
+    file_path = filedialog.askopenfilename()
+    #root.mainloop()
+    #root.destroy()
+    with open(file_path,'r') as f :
+        string=''.join(f.readlines())
+       
+if len(string)==1:
+    print('0')
+    exit(0)
+# Creating tree nodes
+class NodeTree(object):
 
-# defining labels 
-activities = ['eat', 'sleep', 'work', 'play'] 
+    def __init__(self, left=None, right=None):
+        self.left = left
+        self.right = right
 
-# portion covered by each label 
-slices = [3, 7, 8, 6] 
+    def children(self):
+        return (self.left, self.right)
 
-# color for each label 
-colors = ['r', 'y', 'g', 'b'] 
+    def nodes(self):
+        return (self.left, self.right)
 
-# plotting the pie chart 
-plt.pie(slices, labels = activities, colors=colors, 
-		startangle=90, shadow = True, explode = (0, 0, 0.1, 0), 
-		radius = 1.2, autopct = '%1.1f%%') 
+    def __str__(self):
+        return '%s_%s' % (self.left, self.right)
 
-# plotting legend 
-plt.legend() 
 
-# showing the plot 
-plt.show() 
+# Main function implementing huffman coding
+def huffman_code_tree(node, left=True, binString=''):
+    if type(node) is str:
+        return {node: binString}
+    (l, r) = node.children()
+    d = dict()
+    d.update(huffman_code_tree(l, True, binString + '0'))
+    d.update(huffman_code_tree(r, False, binString + '1'))
+    return d
+
+
+# Calculating frequency
+freq = {}
+for c in string:
+    if c in freq:
+        freq[c] += 1
+    else:
+        freq[c] = 1
+
+freq = sorted(freq.items(), key=lambda x: x[1], reverse=True)
+
+nodes = freq
+
+while len(nodes) > 1:
+    (key1, c1) = nodes[-1]
+    (key2, c2) = nodes[-2]
+    nodes = nodes[:-2]
+    node = NodeTree(key1, key2)
+    nodes.append((node, c1 + c2))
+
+    nodes = sorted(nodes, key=lambda x: x[1], reverse=True)
+
+huffmanCode = huffman_code_tree(nodes[0][0])
+print(' Char | Huffman code ')
+print('----------------------')
+
+for (char, frequency) in freq:
+    print(char,'   |   ',huffmanCode[char])
+    
+output=''
+for c in string:
+    output=output+huffmanCode[c]
+my_set=set()    
+for item in string:
+    my_set.add(item)
+simple_coding_length=(len(bin(len(my_set)))-2)*len(string)
+print(f"Huffman Code : {output}\tLength : {len(output)}")
+print(f"Simple Coding Length : {simple_coding_length}")
+print(f"Tafazol : {simple_coding_length-len(output)}")
+
