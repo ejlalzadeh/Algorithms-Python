@@ -11,6 +11,6 @@ def selection_sort(arr):
 lst=[int(i) for i in input("Enter numbers :").split(' ')]
 selection_sort(lst)
 print(lst)
-# WorstCase and AverageCase and BestCase : teta(n^2) 
+# WorstCase and AverageCase and BestCase : θ(n^2) 
     
  

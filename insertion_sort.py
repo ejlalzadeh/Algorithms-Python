@@ -11,5 +11,5 @@ lst=[4,7,19,8,6,13,1]
 insertion_sort(lst,len(lst))
 print(lst)
             
-# Worst Case and Average Case : teta(n^2)
-# Best Case : teta(n)
+# Worst Case and Average Case : θ(n^2)
+# Best Case : θ(n)

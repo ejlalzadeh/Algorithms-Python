@@ -11,4 +11,4 @@ def bubble_sort(lst):
 bubble_sort(lst)
 print(lst)      
 
-# WorstCase and AverageCase and BestCase : teta(n^2) 
+# WorstCase and AverageCase and BestCase : θ(n^2) 

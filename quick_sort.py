@@ -1,5 +1,5 @@
 '''
-Worst case :teta(n^2) , When the list is sorted ( T(n)=T(n-1)+n-1 )
+Worst case :θ(n^2) , When the list is sorted ( T(n)=T(n-1)+n-1 )
 zamani ke masale be 2 zir masale ba andaze haye 1 , n-1 taghsim shavad
 
 '''
