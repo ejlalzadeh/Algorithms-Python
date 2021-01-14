@@ -1,4 +1,16 @@
-import tkinter # note that module name has changed from Tkinter in Python 2 to tkinter in Python 3
-top = tkinter.Tk()
-# Code to add widgets will go here...
-top.mainloop()
+def selection_sort(arr):
+    n=len(arr)
+    for i in range(0,n):
+        max_index=0
+        for j in range(0,n):
+            if arr[j]>arr[max_index]:
+                max_index=j
+        arr[max_index],arr[n-1]=arr[n-1],arr[max_index]
+        n=n-1
+
+lst=[int(i) for i in input("Enter numbers :").split(' ')]
+selection_sort(lst)
+print(lst)
+# WorstCase and AverageCase and BestCase : teta(n^2) 
+    
+ 
