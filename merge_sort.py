@@ -42,4 +42,4 @@ print(lst)
 
 
 # T(n)=2T(n/2)+θ(n) Note : θ(n) is TimeComplexity of merge function
-# TimeComplexity = θ(nLogn)
+# TimeComplexity = θ(nLogn) in BestCase and WorstCase and AverageCase
