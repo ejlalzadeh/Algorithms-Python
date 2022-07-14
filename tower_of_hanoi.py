@@ -8,4 +8,4 @@ def tower_of_hanoi(n,source,destination,intermediate):
 
 
 n=3
-tower_of_hanoi(n,'A','C','B')   
+tower_of_hanoi(n,'A','C','B')
